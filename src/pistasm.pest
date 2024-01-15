@@ -1,0 +1,12 @@
+num=@{ASCII_DIGIT+}
+pop={"pop"}
+swp={"swp"}
+dup={"dup"}
+add={"add"}
+mul={"mul"}
+div={"div"}
+sub={"sub"}
+jmp={"jmp"~num}
+ins=_{num|pop|swp|dup|add|mul|div|sub|jmp}
+prg={SOI~(ins)+~EOI}
+WHITESPACE=_{" "|"\n"}

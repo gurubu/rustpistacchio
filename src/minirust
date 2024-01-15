@@ -1,0 +1,16 @@
+how to minify rust
+
+pfn=pub fn 
+&ms= &mut self
+pub fn psh(&mut self,i:i32){self.ds.push(i);}
+pfn psh(&ms,i:i32){self.ds.push(i)}
+
+pfn = pub fn
+lfn = fn
+&is = &self
+&ms = &mut self
+
+p public
+l local
+is = immutable self
+ms = mutable self
