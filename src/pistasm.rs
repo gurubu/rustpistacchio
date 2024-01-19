@@ -18,13 +18,37 @@ pub fn prs(s:&String,v:&mut v){
    Rule::mul=>v.ins(ins::mul),
    Rule::sub=>v.ins(ins::sub),
    Rule::div=>v.ins(ins::div),
-   Rule::jmp=>{for y in x.clone().into_inner(){
-    match y.as_rule(){
-     Rule::num=>v.ins(ins::jmp(y.as_str().parse::<usize>().unwrap())),
-     _=>(),
+   Rule::hlt=>v.ins(ins::hlt),
+   Rule::eql=>v.ins(ins::eql),
+   Rule::lth=>v.ins(ins::lth),
+   Rule::gth=>v.ins(ins::gth),
+   Rule::lbl=>v.lbl((String::from(x.as_str()),v.is.len())),
+   Rule::jmp=>{
+    for y in x.clone().into_inner(){
+     match y.as_rule(){
+      Rule::num=>v.ins(ins::jmp(y.as_str().parse::<usize>().unwrap())),
+      _=>(),
+     }
     }
-   }},
-   _=>v.ins(ins::nil),
+   },
+   Rule::ji0=>{
+    for y in x.clone().into_inner(){
+     match y.as_rule(){
+      Rule::num=>v.ins(ins::ji0(y.as_str().parse::<usize>().unwrap())),
+      _=>(),
+     }
+    }
+   },
+   Rule::ji1=>{
+    for y in x.clone().into_inner(){
+     match y.as_rule(){
+      Rule::num=>v.ins(ins::ji1(y.as_str().parse::<usize>().unwrap())),
+      _=>(),
+     }
+    }
+   },
+   Rule::clr=>v.ins(ins::scr),
+    _=>(),
   }
  }
 }
@@ -41,15 +65,9 @@ pub fn iprs(s:&String,v:&mut v){
    Rule::mul=>v.mul(),
    Rule::sub=>v.sub(),
    Rule::div=>v.div(),
-   // Rule::pop=>println!("pop"),
-   // Rule::num=>println!("num"),
-   // Rule::swp=>println!("swp"),
-   // Rule::dup=>println!("dup"),
-   // Rule::add=>println!("add"),
-   // Rule::mul=>println!("mul"),
-   // Rule::sub=>println!("sub"),
-   // Rule::div=>println!("div"),
-      _=>(),
+   Rule::hlt=>v.hlt(),
+   Rule::clr=>v.clr(),
+   _=>(),
   }
  }
 }
