@@ -6,10 +6,10 @@ pub enum vhmi{
 impl vhmi{
  pub fn matcha(self)->u8{
   match self{
-   vhmi::pop=>0,vhmi::psh=>1,
-   vhmi::swp=>2,vhmi::dup=>3,
-   vhmi::add=>4,vhmi::sub=>5,
-   vhmi::mul=>6,vhmi::div=>7,
+   vhmi::pop=>0x0,vhmi::psh=>0x1,
+   vhmi::swp=>0x2,vhmi::dup=>0x3,
+   vhmi::add=>0x4,vhmi::sub=>0x5,
+   vhmi::mul=>0x6,vhmi::div=>0x7,
   }
  }
 }

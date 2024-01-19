@@ -1,3 +1,4 @@
+pub mod fraise;
 pub mod vm;
 pub mod pistasm;
 pub mod repl;

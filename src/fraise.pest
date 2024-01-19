@@ -1,0 +1,16 @@
+num=@{ASCII_DIGIT+}
+wrd=@{ASCII_ALPHA+}
+dup={"dup"|"≍"}
+swp={"swp"|"⥊"}
+pop={"pop"|"↓"}
+add={"add"|"+"}
+sub={"sub"|"-"}
+mul={"mul"|"×"}
+div={"div"|"÷"}
+eql={"eql"|"≡"}
+gth={"gth"|">"}
+lth={"lth"|"<"}
+def={":"~wrd~(ins)+~";"}
+ins=_{dup|swp|pop|add|sub|mul|div|eql|gth|lth|num}
+prg={SOI~ins+~EOI}
+WHITESPACE={" "|"\n"}
